@@ -31,6 +31,10 @@ public class Player {
     @JoinColumn(name = "team_id")
     private Team team;
 
+    @Enumerated(EnumType.STRING)
+    @Column(nullable = false)
+    private Role role; // ADMIN, USER
+
     @CreatedDate
     @Column(nullable = false)
     private LocalDateTime createdAt;
@@ -40,14 +44,17 @@ public class Player {
     private LocalDateTime updatedAt;
 
     @Builder
-    public Player(int id, String playerName, Position position, boolean isOut, LocalDateTime createdAt, LocalDateTime updatedAt) {
+    public Player(int id, String playerName, Position position, boolean isOut, Role role, LocalDateTime createdAt, LocalDateTime updatedAt) {
         this.id = id;
         this.playerName = playerName;
         this.position = position;
         this.isOut = isOut;
+        this.role = role;
         this.createdAt = createdAt;
         this.updatedAt = updatedAt;
     }
+
+
 
     // 연관관계 메서드
     public void setTeam(Team team){
