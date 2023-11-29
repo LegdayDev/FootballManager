@@ -8,9 +8,11 @@ import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
+import org.springframework.security.web.servlet.util.matcher.MvcRequestMatcher;
 import org.springframework.web.cors.CorsConfiguration;
 import org.springframework.web.cors.CorsConfigurationSource;
 import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
+import org.springframework.web.servlet.handler.HandlerMappingIntrospector;
 
 @Slf4j
 @EnableWebSecurity
@@ -25,7 +27,7 @@ public class SecurityConfig {
     // TODO : JWT 필터 추가
 
     @Bean
-    public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
+    public SecurityFilterChain filterChain(HttpSecurity http, HandlerMappingIntrospector introspector) throws Exception {
         log.debug("FilterChain 빈 등록");
 
         http.headers(httpSecurityHeadersConfigurer -> httpSecurityHeadersConfigurer.frameOptions(frameOptionsConfig -> frameOptionsConfig.disable()));
@@ -36,19 +38,15 @@ public class SecurityConfig {
         // TODO : JWT 시작하면 주석 풀기
 //        http.sessionManagement(httpSecuritySessionManagementConfigurer -> httpSecuritySessionManagementConfigurer.sessionCreationPolicy(SessionCreationPolicy.STATELESS));
 
-        http.authorizeHttpRequests(
-                (auth) -> auth
-                        //TODO : 우선 권한없이 모든 요청 허용
-                        //.requestMatchers("/", "/login", "/admin/login").permitAll()
-                        //.requestMatchers("/api", "/admin").hasRole(Role.ADMIN + "")
-                        .anyRequest().permitAll()
-
-        );
+        http.authorizeHttpRequests((authorizationManagerRequestMatcherRegistry) -> {
+            authorizationManagerRequestMatcherRegistry.requestMatchers(new MvcRequestMatcher(introspector, "/admin/**")).hasRole("" + Role.ADMIN);
+            authorizationManagerRequestMatcherRegistry.anyRequest().permitAll();
+        });
 
         return http.build();
     }
 
-    public CorsConfigurationSource configurationSource(){
+    public CorsConfigurationSource configurationSource() {
         log.debug("configurationSource cors 설정이 SecurityFilterChain 등록됨 ");
         CorsConfiguration configuration = new CorsConfiguration();
         configuration.addAllowedHeader("*"); // 모든 헤더허용
