@@ -30,17 +30,17 @@ public class SecurityConfig {
     public SecurityFilterChain filterChain(HttpSecurity http, HandlerMappingIntrospector introspector) throws Exception {
         log.debug("FilterChain 빈 등록");
 
-        http.headers(httpSecurityHeadersConfigurer -> httpSecurityHeadersConfigurer.frameOptions(frameOptionsConfig -> frameOptionsConfig.disable()));
-        http.csrf(httpSecurityCsrfConfigurer -> httpSecurityCsrfConfigurer.disable()); // CSRF 비활성화
-        http.formLogin(httpSecurityFormLoginConfigurer -> httpSecurityFormLoginConfigurer.loginPage("/login"));
-        http.httpBasic(httpSecurityHttpBasicConfigurer -> httpSecurityHttpBasicConfigurer.disable());
-        http.cors(httpSecurityCorsConfigurer -> httpSecurityCorsConfigurer.configurationSource(configurationSource()));
+        http.headers(security -> security.frameOptions(frameOptionsConfig -> frameOptionsConfig.disable()));
+        http.csrf(security -> security.disable()); // CSRF 비활성화
+        http.formLogin(security -> security.loginPage("/login"));
+        http.httpBasic(security -> security.disable());
+        http.cors(security -> security.configurationSource(configurationSource()));
         // TODO : JWT 시작하면 주석 풀기
 //        http.sessionManagement(httpSecuritySessionManagementConfigurer -> httpSecuritySessionManagementConfigurer.sessionCreationPolicy(SessionCreationPolicy.STATELESS));
 
-        http.authorizeHttpRequests((authorizationManagerRequestMatcherRegistry) -> {
-            authorizationManagerRequestMatcherRegistry.requestMatchers(new MvcRequestMatcher(introspector, "/admin/**")).hasRole("" + Role.ADMIN);
-            authorizationManagerRequestMatcherRegistry.anyRequest().permitAll();
+        http.authorizeHttpRequests((security) -> {
+            security.requestMatchers(new MvcRequestMatcher(introspector, "/admin/**")).hasRole("" + Role.ADMIN);
+            security.anyRequest().permitAll();
         });
 
         return http.build();
