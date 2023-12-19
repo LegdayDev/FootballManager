@@ -22,4 +22,16 @@ public class DummyObject {
                 .updatedAt(LocalDateTime.now())
                 .build();
     }
+
+    protected User dummyUser(String username, String fullName){
+        BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
+        String encPassword = passwordEncoder.encode("1234");
+        return User.builder()
+                .username(username)
+                .password(encPassword)
+                .email(username + "@nate.com")
+                .fullName(fullName)
+                .role(UserEnum.VISITOR)
+                .build();
+    }
 }
