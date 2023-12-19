@@ -1,6 +1,7 @@
 package com.legdayDev.FootballManager.dto.user;
 
 import com.legdayDev.FootballManager.domain.user.User;
+import com.legdayDev.FootballManager.domain.user.UserEnum;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Pattern;
 import jakarta.validation.constraints.Size;
@@ -33,7 +34,7 @@ public class UserReqDto {
                     .password(passwordEncoder.encode(password))
                     .email(email)
                     .fullName(fullName)
-                    .role("VISITOR")
+                    .role(UserEnum.VISITOR)
                     .build();
         }
     }

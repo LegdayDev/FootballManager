@@ -14,6 +14,7 @@ import java.time.LocalDateTime;
 @EntityListeners(AuditingEntityListener.class)
 @Getter
 @Entity
+@Table(name="Users")
 public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -33,7 +34,7 @@ public class User {
 
     @Enumerated(EnumType.STRING)
     @Column(nullable = false)
-    private String role; // ADMIN , VISITOR
+    private UserEnum role; // ADMIN , VISITOR
 
     @CreatedDate
     @Column(nullable = false)
@@ -45,7 +46,7 @@ public class User {
 
     @Builder
     public User(int id, String username, String fullName, String password, String email,
-                String role, LocalDateTime createdAt, LocalDateTime updatedAt) {
+                UserEnum role, LocalDateTime createdAt, LocalDateTime updatedAt) {
         this.id = id;
         this.username = username;
         this.fullName = fullName;

@@ -40,6 +40,8 @@ public class SecurityConfig {
 
         http.authorizeHttpRequests((security) -> {
             security.requestMatchers(new MvcRequestMatcher(introspector, "/admin/**")).hasRole("" + Role.ADMIN);
+            security.requestMatchers(new MvcRequestMatcher(introspector, "/api/s/**")).authenticated();
+            security.requestMatchers(new MvcRequestMatcher(introspector, "/s/**")).authenticated();
             security.anyRequest().permitAll();
         });
 
