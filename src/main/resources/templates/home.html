@@ -1,0 +1,126 @@
+<!doctype html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Football Manager</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <style>
+        .fakeimg {
+            height: 200px;
+            background: #aaa;
+        }
+    </style>
+</head>
+<body>
+
+<div class="p-5 bg-success text-white text-center">
+    <h1>Football Manager</h1>
+</div>
+
+<nav class="navbar navbar-expand-sm bg-dark navbar-dark">
+    <div class="container-fluid">
+        <ul class="navbar-nav">
+            <li class="nav-item">
+                <a class="nav-link active" href="#">홈</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#">선수 등록</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#">선수 목록</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#">구장 등록</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#">구장 목록</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#">팀 등록</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#">팀 목록</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#">최신 뉴</a>
+            </li>
+
+        </ul>
+
+        <ul class="navbar-nav">
+            <li class="nav-item">
+                <a class="nav-link active" href="#">로그인</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#">회원 가입</a>
+            </li>
+        </ul>
+    </div>
+</nav>
+
+<div class="container mt-5">
+    <div class="row">
+        <div class="col-sm-4">
+            <h2>About Me</h2>
+            <h5>Photo of me:</h5>
+            <img src="/img/Ronaldo.jpg" class="rounded" alt="Cristiano Ronaldo" width="304" height="236">
+            <p>백엔드 개발자가 되기 위해 준비중인 최재영입니다.</p>
+            <h3 class="mt-4">Some Links</h3>
+            <ul class="nav nav-pills flex-column">
+                <li class="nav-item">
+                    <a class="nav-link" href="#"
+                       th:href="@{https://github.com/LegdayDev}"
+                       target="_blank">Dev : Github</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#"
+                       th:href="@{https://velog.io/@legday/posts}"
+                       target="_blank">Blog : Velog</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link disabled" href="#">Email : chlwodud0327@naver.com</a>
+                </li>
+            </ul>
+            <hr class="d-sm-none">
+        </div>
+        <div class="col-sm-8">
+            <h2>Old Trafford History</h2>
+            <h5>Old Trafford first opened in 1910.</h5>
+            <img class="img-fluid" src="/img/OldTrafford.jpg" alt="Old Trafford" width="1100" height="500">
+            <p>Old Trafford</p>
+            <p>올드 트래퍼드(Old Trafford)는 영국 잉글랜드 그레이터맨체스터주 트래퍼드에 위치한 축구 경기장이다. 현재 맨체스터 유나이티드의 홈구장으로, 보비 찰튼에 의해 붙여진 이른바 꿈의 극장(The Theater of Dreams)이란
+                별칭으로도 알려져 있다. 1910년에 개장된 경기장은 2차 세계대전에는 폭격에 의해 절반이상이 파괴되기도 했다. 이곳에서 1966년 FIFA 월드컵, 1966년 FIFA 월드컵, UEFA 유로 1996, 2012 런던올림픽의 경기를 치른
+                적이 있으며 2003년 UEFA 챔피언스리그 결승전이 이곳에서 열렸다. 웸블리 경기장 다음으로 잉글랜드에서 2번째로 큰 수용 규모를 가지고 있다. UEFA가 공인한 별 5개의 경기장이기도 하다. 따라서 UEFA 유럽축구선수권대회 및 UEFA
+                챔피언스리그의 결승전을 치를 수 있는 자격이 있다.</p>
+
+            <h2 class="mt-5">Manchester United Treble</h2>
+            <h5>1998–99 Manchester United F.C. season</h5>
+            <img class="img-fluid" src="/img/ManUnited_1999.jpg" alt="Old Trafford" width="1100" height="500">
+            <p>잉글랜드 리그 최초의 트레블</p>
+            <p>1998-99 시즌에서 맨체스터 유나이티드는 프리미어리그, FA컵, UEFA 챔피언스리그에서 우승함으로써 잉글랜드 프로축구팀 역사상 한 시즌에서 가장 좋은 성적을 거둔 팀이 되었다. 12월 19일 미들즈브러 FC에 2:3으로 패한 이후
+                33경기 동안 무패행진을 달렸으며, 토트넘 홋스퍼를 프리미어리그 마지막 경기에서 2:1로 꺾고 79점의 승점을 기록, 애스턴 빌라를 1:0으로 꺾고 78점의 승점을 기록한 아스널을 1점 차이로 따돌리고 우승하였다. 알렉스 퍼거슨 감독의
+                회고에 따르면 프리미어리그 우승이 가장 어려웠다고 한다.</p>
+            <p>
+                FA컵에서는 준결승 2차전에서 로이 킨이 마르크 오버르마르스에게 거친 태클을 가하며 경고 누적으로 퇴장당한 어려운 상황에서, 골키퍼 슈마이켈이 데니스 베르흐캄프의 페널티킥을 막아냈고 연장전에 돌입하여 라이언 긱스가 하프라인에서부터 수비수
+                4명을 제친 후 환상적인 골을 넣으며 결승에 극적으로 진출하였다. FA컵 결승전에서는 폴 스콜스와 테디 셰링엄의 골로 뉴캐슬 유나이티드를 2:0으로 꺾고 우승을 차지하였다.
+            </p>
+            <p>
+                캄프 누에서 열린 UEFA 챔피언스리그 결승전에서는 바이에른 뮌헨과의 접전 끝에 이른바 캄프 누의 기적을 일구어 내며 2:1의 극적인 역전승을 거두었다.
+                트레블의 달성으로 알렉스 퍼거슨에게는 영국 왕실로부터 기사 작위가 수여되었으며, 이후 열린 인터콘티넨털컵에서 파우메이라스를 로이 킨의 골로 1:0으로 꺾고 우승을 차지하였다.
+            </p>
+        </div>
+    </div>
+</div>
+
+<div class="mt-5 p-4 bg-dark text-white text-center">
+    <div class="jumbotron text-center" style="margin-bottom: 0">
+        <p>Created by LegdayDev</p>
+        <p>📞 010-xxxx-xxxx</p>
+        <p>🏴 부산 부산남구 대연동</p>
+    </div>
+</div>
+
+</body>
+</html>
